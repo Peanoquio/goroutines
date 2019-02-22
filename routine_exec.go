@@ -26,4 +26,9 @@ func main() {
 		fmt.Printf("index: %d value: %d \n", i, v)
 	}
 
+	// NewMyRandomStuff
+	fmt.Println("===== NewMyRandomStuff =====")
+	myRandomStuffObj := routine.NewMyRandomStuff()
+	textList := []string{"a", "b", "c", "x", "y", "z"}
+	myRandomStuffObj.StoreText(textList)
 }
