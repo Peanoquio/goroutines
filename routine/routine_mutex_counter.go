@@ -16,7 +16,7 @@ type myCounter struct {
 	counter int
 	// data enclosed between Mutex Lock and Unlock will be atomic (only one Go Routine can access and modify it at a time)
 	// similar to synchronize() for Java threads
-	mux sync.Mutex
+	mux *sync.Mutex
 }
 
 // Inc will increment the counter and then return the value
@@ -37,6 +37,6 @@ func (mc *myCounter) Get() int {
 
 // NewMyCounter is the factory function that instantiates the myCounter through its constructor
 func NewMyCounter(counter int) MyCounterInterface {
-	var myCounterInterface MyCounterInterface = &myCounter{counter: 0}
+	var myCounterInterface MyCounterInterface = &myCounter{counter: 0, mux: &sync.Mutex{}}
 	return myCounterInterface
 }
